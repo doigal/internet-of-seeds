@@ -8,5 +8,13 @@
   "thingspeak": {
     "cid": "",
     "apikey": ""
+  },
+  "location": {
+    "lat": "",
+    "long": ""
+  },
+  "lighttime": {
+    "on": "6",
+    "off": "22"
   }
 }
