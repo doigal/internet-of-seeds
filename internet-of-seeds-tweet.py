@@ -17,16 +17,16 @@ def tweet_pic(status, latest, config_f='config.json'):
   api.update_with_media(latest, status=status)
 
 ## Set the latest image filename, grab the last line from the data log.
+tispic = '2_TiSImages/' # Folder for overlaid images
+latest = tispic + 'latest_ts.jpg'
 
-latest = 'data/latest_ts.jpg'
-
-fn = 'data/internet-of-seeds.log'
+fn = 'InternetOfSeeeeds.log'
 with open(fn) as f:
   for l in f.readlines():
     pass
 
 ## Format the sensor values nicely for tweeting, run the tweet_pic function.
-
 sensor_vals = l.rstrip().split('\t')
-status = '%s: Temp: %s C, Press: %s hPa, Light: %s lux, RGB: %s,%s,%s.' % tuple(sensor_vals)
+status = '%s: Temp: %s C, Press: %s hPa, Light: %s lux, CCT: %sK, Disk Free: %s Mb' % (sensor_vals[0], sensor_vals[1], sensor_vals[2], sensor_vals[3], sensor_vals[7], sensor_vals[8])
+#print status
 tweet_pic(status, latest)
