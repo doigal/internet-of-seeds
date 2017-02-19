@@ -46,17 +46,20 @@ be capturing a lot of images.
 
 ## Using the scripts
 
-We chose to use cron to run the two Python scripts via a couple of shell
+We chose to use cron to run the three Python scripts via a couple of shell
 scripts.
 
 You can do the following to run the image capture/data logging script every 10
-minutes and the tweeting script 3 times daily, at 06:05, 12:05 and 18:05.
+minutes and the tweeting script 3 times daily, at 07:05, 12:05 and 18:05.
+
+The timelapse assembler script runs at five past midnight on the first of each month.
 
 After typing `crontab -e`, add the following lines to the bottom.
 
 ```
 */10 * * * * sh /home/pi/internet-of-seeds/internet-of-seeds.sh >> /home/pi/internet-of-seeds/data/cron.log
-05 06,12,18 * * * sh /home/pi/internet-of-seeds/internet-of-seeds-tweet.sh >> /home/pi/internet-of-seeds/data/cron.log
+05 07,12,18 * * * sh /home/pi/internet-of-seeds/internet-of-seeds-tweet.sh >> /home/pi/internet-of-seeds/data/cron.log
+05 0 1 * * sh /home/pi/internet-of-seeds/internet-of-seeds-timelapse.sh >> /home/pi/internet-of-seeds/data/cron.log
 ```
 
 This also logs all of the standard output to a file named `cron.log` in the
